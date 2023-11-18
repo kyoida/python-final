@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from database.models import db, User
+from database.models import db, User, CartItem, Product
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///savoir.db'
@@ -55,6 +55,75 @@ def register():
             return redirect(url_for("login", context="Successfully registered!"))
 
     return render_template("registration.html")
+
+
+@app.route('/cart')
+def view_cart():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+
+    # Retrieve cart items for the user
+    cart_items = user.cart_items
+
+    return render_template('cart.html', cart_items=cart_items)
+
+
+def get_product_by_id(product_id):
+    return Product.query.get(product_id)
+
+@app.route('/add_to_cart/<int:product_id>')
+def add_to_cart(product_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    # Retrieve the product details based on the product_id
+    product = get_product_by_id(product_id)
+
+    if product:
+        # Check if the item is already in the cart
+        cart_item = CartItem.query.filter_by(product_name=product.name, user_id=user_id).first()
+
+        if cart_item:
+            # If item exists, update quantity
+            cart_item.quantity += 1
+        else:
+            # If item does not exist, add it to the cart
+            new_cart_item = CartItem(
+                product_name=product.name,
+                price=product.price,
+                quantity=1,
+                user_id=user_id
+            )
+            db.session.add(new_cart_item)
+
+        db.session.commit()
+
+    return redirect(url_for('index'))
+
+@app.route('/products')
+def view_products():
+    # Retrieve all products from the database
+    products = Product.query.all()
+    return render_template('products.html', products=products)
+
+
+@app.route('/add_product', methods=['GET', 'POST'])
+def add_product():
+    if request.method == 'POST':
+        name = request.form['name']
+        description = request.form['description']
+        price = float(request.form['price'])  # Assuming the price is a float
+
+        new_product = Product(name=name, description=description, price=price)
+        db.session.add(new_product)
+        db.session.commit()
+
+    return redirect(url_for('view_products'))
 
 
 if __name__ == "__main__":
