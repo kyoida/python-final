@@ -18,3 +18,6 @@ if __name__ == "__main__":
     with app.app_context():  # Ensuring the code runs within the application context
         db.create_all()  # Creating the database tables
     app.run(debug=True)
+
+
+    # dfhv
