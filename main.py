@@ -131,6 +131,13 @@ def show_watches():
     watches = Product.query.all()
     return render_template('watches.html', watches = watches)
 
+@app.route('/mechanism')
+def show_mechanism():
+    return render_template('mechanism.html')
+
+@app.route('/giftcard')
+def giftcard():
+    return render_template('giftcard.html')
 
 
 if __name__ == "__main__":
