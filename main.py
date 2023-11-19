@@ -11,7 +11,8 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    products = Product.query.all()
+    return render_template("index.html", products=products)
 
 
 @app.route('/login', methods=['POST', 'GET'])
