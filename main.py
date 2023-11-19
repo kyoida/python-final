@@ -126,6 +126,13 @@ def add_product():
     return redirect(url_for('view_products'))
 
 
+@app.route('/watches')
+def show_watches():
+    watches = Product.query.all()
+    return render_template('watches.html', watches = watches)
+
+
+
 if __name__ == "__main__":
     with app.app_context():  # Ensuring the code runs within the application context
         db.create_all()  # Creating the database tables
