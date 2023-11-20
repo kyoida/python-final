@@ -35,13 +35,14 @@ class Product(db.Model):
     name = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text)
     price = db.Column(db.Float, nullable=False)
-    img_url = db.Column(db.String(255))
+    img_url = db.Column(db.String(255), nullable=True)  # Ensure nullable is set appropriately
 
     def __init__(self, img_url, name, price, description):
         self.img_url = img_url
         self.name = name
         self.price = price
         self.description = description
+
 
     def saveToDB(self):
         db.session.add(self)

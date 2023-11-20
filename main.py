@@ -75,7 +75,7 @@ def view_cart():
         final_total += product.price * product.quantity
         products.append(product)
 
-    return render_template('cart.html', product=product, final_total = final_total)
+    return render_template('cart.html', product=products, final_total = final_total)
 
 
 def get_product_by_id(product_id):
@@ -156,12 +156,12 @@ def add_product():
     return redirect(url_for('view_products'))
 
 
-@app.route("/addmugs", methods=["POST", "GET"])
-def addMug():
-    # Assuming you have a 'username' variable in your session
-    if 'username' in session:
+def add_watch():
+    # Check if the user is logged in
+    if 'login' in session:
+        # Check if the logged-in user is an admin
         if session['login'] == 'Admin':
-            product = Product.query.all()
+            products = Product.query.all()
 
             if request.method == "POST":
                 name = request.form.get('title')
@@ -175,7 +175,10 @@ def addMug():
                 return render_template('add_watch.html', product=product)
 
             elif request.method == "GET":
-                return render_template('add_watch.html', product=product)
+                return render_template('add_watch.html', products=products)
+
+    # If the user is not logged in or is not an admin, you can redirect to a login page or display an error message.
+    return "Unauthorized access"
 
 
 @app.route('/watches')
