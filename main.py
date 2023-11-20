@@ -184,6 +184,15 @@ def show_watches():
     return render_template('watches.html', watches = watches)
 
 
+@app.route('/mechanism')
+def show_mechanism():
+    return render_template('mechanism.html')
+
+
+@app.route('/giftcard')
+def giftcard():
+    return render_template('giftcard.html')
+
 
 if __name__ == "__main__":
     with app.app_context():  # Ensuring the code runs within the application context

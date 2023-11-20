@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Purchase a Gift Card</h3>
+                    <p class="card-text">Give the gift of choice with our exclusive watches gift card.</p>
+                    
+                    <form action="/purchase-gift-card" method="post"> <!-- Update action URL as needed -->
+                        <div class="form-group">
+                            <label for="amount">Select Amount</label>
+                            <select name="amount" id="amount" class="form-control">
+                                <option value="50">$50</option>
+                                <option value="100">$100</option>
+                                <option value="200">$200</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="recipient-email">Recipient's Email</label>
+                            <input type="email" id="recipient-email" name="recipient-email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Personal Message (optional)</label>
+                            <textarea id="message" name="message" class="form-control"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" href="giftcard.html">Purchase Gift Card</button>
+                    </form>
+                    <div id="successMessage" class="alert alert-success mt-3 d-none">
+                        Gift card sent successfully!
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+
+{% endblock %}
