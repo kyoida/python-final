@@ -66,23 +66,29 @@ def view_cart():
     user_id = session['user_id']
     user = User.query.get(user_id)
 
-    # Retrieve cart items for the user
-    cart_items = user.cart_items
+    cart_items = CartItem.query.filter_by(user_id=user_id).all()
+    products = []
+    final_total = 0
+    for item in cart_items:
+        product = Product.query.get(item.mug_id)
+        product.quantity = item.quantity
+        final_total += product.price * product.quantity
+        products.append(product)
 
-    return render_template('cart.html', cart_items=cart_items)
+    return render_template('cart.html', product=product, final_total = final_total)
 
 
 def get_product_by_id(product_id):
     return Product.query.get(product_id)
 
-@app.route('/add_to_cart/<int:product_id>')
+
+@app.route('/add_to_cart/<int:product_id>', methods=["POST", "GET"])
 def add_to_cart(product_id):
     if 'user_id' not in session:
         return redirect(url_for('login'))
 
     user_id = session['user_id']
 
-    # Retrieve the product details based on the product_id
     product = get_product_by_id(product_id)
 
     if product:
@@ -106,6 +112,29 @@ def add_to_cart(product_id):
 
     return redirect(url_for('index'))
 
+
+@app.route('/remove_from_cart/<int:product_id>', methods=["POST", "GET"])
+def remove_from_cart(product_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    product = get_product_by_id(product_id)
+
+    if product:
+        # Check if the item is already in the cart
+        cart_item = CartItem.query.filter_by(product_name=product.name, user_id=user_id).first()
+
+        if cart_item.quantity > 1:
+            cart_item.quantity -= 1
+            cart_item.saveToDB()
+        else:
+            cart_item.deleteFromDB()
+
+    return redirect(url_for('index'))
+
+
 @app.route('/products')
 def view_products():
     # Retrieve all products from the database
@@ -125,6 +154,28 @@ def add_product():
         db.session.commit()
 
     return redirect(url_for('view_products'))
+
+
+@app.route("/addmugs", methods=["POST", "GET"])
+def addMug():
+    # Assuming you have a 'username' variable in your session
+    if 'username' in session:
+        if session['login'] == 'Admin':
+            product = Product.query.all()
+
+            if request.method == "POST":
+                name = request.form.get('title')
+                img_url = request.form.get('img_url')
+                description = request.form.get('description')
+                price = request.form.get('price')
+
+                product = Product(name=name, img_url=img_url, description=description, price=price)
+                product.saveToDB()
+
+                return render_template('add_watch.html', product=product)
+
+            elif request.method == "GET":
+                return render_template('add_watch.html', product=product)
 
 
 @app.route('/watches')
