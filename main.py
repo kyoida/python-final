@@ -11,8 +11,8 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    products = Product.query.all()
-    return render_template("index.html", products=products)
+    # products = Product.query.all()
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -108,7 +108,6 @@ def add_to_cart(product_id):
 
 @app.route('/products')
 def view_products():
-    # Retrieve all products from the database
     products = Product.query.all()
     return render_template('products.html', products=products)
 
@@ -118,7 +117,7 @@ def add_product():
     if request.method == 'POST':
         name = request.form['name']
         description = request.form['description']
-        price = float(request.form['price'])  # Assuming the price is a float
+        price = float(request.form['price']) 
 
         new_product = Product(name=name, description=description, price=price)
         db.session.add(new_product)
@@ -127,10 +126,10 @@ def add_product():
     return redirect(url_for('view_products'))
 
 
-@app.route('/watches')
-def show_watches():
-    watches = Product.query.all()
-    return render_template('watches.html', watches = watches)
+# @app.route('/watches')
+# def show_watches():
+#     watches = Product.query.all()
+#     return render_template('watches.html', watches = watches)
 
 @app.route('/mechanism')
 def show_mechanism():
@@ -142,6 +141,6 @@ def giftcard():
 
 
 if __name__ == "__main__":
-    with app.app_context():  # Ensuring the code runs within the application context
-        db.create_all()  # Creating the database tables
+    with app.app_context():  
+        db.create_all()  
     app.run(debug=True)
