@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>Add Watch</h1>
+
+    {% if product %}
+        <form method="POST" action="{{ url_for('addMug') }}">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required><br>
+
+            <label for="img_url">Image URL:</label>
+            <input type="text" name="img_url" required><br>
+
+            <label for="description">Description:</label>
+            <textarea name="description" required></textarea><br>
+
+            <label for="price">Price:</label>
+            <input type="number" name="price" step="0.01" required><br>
+
+            <input type="submit" value="Add Watch">
+        </form>
+    {% else %}
+        <p>No product data available.</p>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}">Back to Home</a>
+{% endblock %}
