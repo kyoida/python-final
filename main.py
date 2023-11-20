@@ -102,7 +102,6 @@ def add_to_cart(product_id):
             # If item does not exist, add it to the cart
             new_cart_item = CartItem(
                 product_name=product.name,
-                price=product.price,
                 quantity=1,
                 user_id=user_id
             )
@@ -137,54 +136,48 @@ def remove_from_cart(product_id):
 
 @app.route('/products')
 def view_products():
-    # Retrieve all products from the database
-    products = Product.query.all()
-    return render_template('products.html', products=products)
+    try:
+        # Retrieve all products from the database
+        products = Product.query.all()
+        print("Products:", products)  # Add this print statement
+        return render_template('products.html', products=products)
+    except Exception as e:
+        # Print or log the exception for debugging
+        print(f"Error fetching products: {e}")
+        return "Internal Server Error", 500
 
 
-@app.route('/add_product', methods=['GET', 'POST'])
-def add_product():
-    if request.method == 'POST':
-        name = request.form['name']
-        description = request.form['description']
-        price = float(request.form['price'])  # Assuming the price is a float
-
-        new_product = Product(name=name, description=description, price=price)
-        db.session.add(new_product)
-        db.session.commit()
-
-    return redirect(url_for('view_products'))
-
-
+@app.route('/add_watch', methods=["POST", "GET"])
 def add_watch():
-    # Check if the user is logged in
-    if 'login' in session:
-        # Check if the logged-in user is an admin
-        if session['login'] == 'Admin':
-            products = Product.query.all()
+    # Check if the user is logged in and is an admin
+    if 'username' in session and session['username'] == 'Admin':
+        products = Product.query.all()
 
-            if request.method == "POST":
-                name = request.form.get('title')
-                img_url = request.form.get('img_url')
-                description = request.form.get('description')
-                price = request.form.get('price')
+        if request.method == 'POST':
+            name = request.form.get('name')
+            description = request.form.get('description')
+            price = float(request.form.get('price', 0.0))  # Assuming the price is a float
+            img_url = request.form.get('img_url')
 
-                product = Product(name=name, img_url=img_url, description=description, price=price)
-                product.saveToDB()
+            new_product = Product(name=name, description=description, price=price, img_url=img_url)
+            db.session.add(new_product)
+            db.session.commit()
 
-                return render_template('add_watch.html', product=product)
+            # Redirect to the add_watch page after the POST request to avoid form resubmission on page refresh
+            return redirect(url_for('add_watch'))
 
-            elif request.method == "GET":
-                return render_template('add_watch.html', products=products)
+        elif request.method == "GET":
+            # Handle the GET request as needed
+            return render_template('add_watch.html', products=products)
 
-    # If the user is not logged in or is not an admin, you can redirect to a login page or display an error message.
+    # If the user is not an admin or not logged in, you can redirect or display an error message.
     return "Unauthorized access"
 
 
 @app.route('/watches')
 def show_watches():
     watches = Product.query.all()
-    return render_template('watches.html', watches = watches)
+    return render_template('watches.html', watches=watches)
 
 
 @app.route('/mechanism')

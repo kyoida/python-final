@@ -62,15 +62,15 @@ class Product(db.Model):
 
 class CartItem(db.Model):
     __tablename__ = "cart_items"
-    item_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    product_name = db.Column(db.String(255))  # Add this line to define the product_name property
     quantity = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey('product.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
-    def __init__(self, user_id, product_id, quantity=1):
-        self.user_id = user_id
-        self.product_id = product_id
+    def __init__(self, product_name, quantity, user_id):
+        self.product_name = product_name
         self.quantity = quantity
+        self.user_id = user_id
 
     def update_quantity(self, quantity):
         self.quantity += quantity
