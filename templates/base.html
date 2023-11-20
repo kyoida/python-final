@@ -10,10 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <title>Savoir {% block title %}{% endblock %}</title>
-{% block head %}    {% endblock %}
+{% block head %}
+{% endblock %}
 </head>
 <body>
+<<<<<<< HEAD
+=======
 
+>>>>>>> f981e3baff0f239fc597424da5f37faa1037e749
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Savoir</a>
@@ -22,19 +26,16 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#"></a>
-              <a class="nav-link" href="#">Features</a>
               <a class="nav-link" href="#">Account</a>
-              <a class="nav-link" href="#">Giftcard</a>
-              <a class="nav-link" >Mechanism</a> <!--  link will be added soon  -->
+              <a class="nav-link" href="{{ url_for('giftcard') }}">Giftcard</a>
+              <a class="nav-link" href="{{ url_for('show_mechanism') }}">Mechanism</a>
+              
               <a class="nav-link" href="#">About Company</a>
-            </div>
           </div>
         </div>
       </nav>
 
 {% block body %}   
-
 {% endblock %}
 
 <!-- Footer -->

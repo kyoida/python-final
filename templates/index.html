@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %} home {% endblock %}
 {% block body %}
 <!-- <h3>Savior: Where Time is Treasured</h3> -->
 
@@ -12,14 +12,13 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="5000">
-        <img src="/static/Desktop - 1.png" class="d-block w-100" alt="...">
+        <img src="/static/css/img/alexander-andrews-anUOLC3zMD4-unsplash.jpg" class="d-block w-100" alt="first main image" >
         <div class="carousel-caption d-none d-md-block">
-          <h5>Explore new 2024 collection</h5>
-          <a href="{{ url_for('view_products') }}"><button>Shop now</button></a>
+          <h1 style="color: white;">Explore new 2024 collection</h1>
         </div>
       </div>
       <div class="carousel-item" data-bs-interval="5000">
-        <img src="/static/Desktop - 1.png" class="d-block w-100" alt="...">
+        <img src="/static/css/img/Desktop - 1.png" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Some representative placeholder content for the second slide.</p>
@@ -50,8 +49,6 @@
 
 
 
-    <!-- <p>Explore our products:</p>
-    <a href="{{ url_for('view_products') }}">View Products</a> -->
 
 
 {% endblock %}
