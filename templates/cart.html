@@ -10,21 +10,21 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
+                <th>Image</th>
             </tr>
         </thead>
         <tbody>
             {% for item in cart_items %}
             <tr>
-                <td>{{ item.product_name }}</td>
+                <td>{{ item.product.name }}</td>
                 <td>${{ item.price }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>${{ item.price * item.quantity }}</td>
+                <td><img src="{{ item.product.img_url }}" alt="{{ item.product.name }}" style="max-height: 250px;"></td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
 
     <a href="{{ url_for('index') }}">Continue Shopping</a>
-
-
 {% endblock %}

@@ -67,15 +67,9 @@ def view_cart():
     user = User.query.get(user_id)
 
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
-    products = []
-    final_total = 0
-    for item in cart_items:
-        product = Product.query.get(item.mug_id)
-        product.quantity = item.quantity
-        final_total += product.price * product.quantity
-        products.append(product)
 
-    return render_template('cart.html', product=products, final_total = final_total)
+    # Pass cart_items to the render_template function
+    return render_template('cart.html', cart_items=cart_items)
 
 
 def get_product_by_id(product_id):
@@ -103,6 +97,7 @@ def add_to_cart(product_id):
             new_cart_item = CartItem(
                 product_name=product.name,
                 quantity=1,
+                price=product.price,
                 user_id=user_id
             )
             db.session.add(new_cart_item)
@@ -190,7 +185,17 @@ def giftcard():
     return render_template('giftcard.html')
 
 
+@app.route('/logout')
+def logout():
+    # Clear the user-related session variables
+    session.pop('user_id', None)
+    session.pop('login', None)
+
+    # Redirect to the login page or any other desired destination
+    return redirect(url_for('login'))
+
+
 if __name__ == "__main__":
-    with app.app_context():  # Ensuring the code runs within the application context
+    with app.app_context(): # Ensuring the code runs within the application context
         db.create_all()  # Creating the database tables
     app.run(debug=True)

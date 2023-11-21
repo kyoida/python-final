@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 db = SQLAlchemy()
 
@@ -60,21 +62,19 @@ class Product(db.Model):
                 "price": self.price}
 
 
+# models.py
+
 class CartItem(db.Model):
-    __tablename__ = "cart_items"
+    __tablename__ = 'cart_items'
+
     id = db.Column(db.Integer, primary_key=True)
-    product_name = db.Column(db.String(255))  # Add this line to define the product_name property
-    quantity = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    product_name = db.Column(db.String, db.ForeignKey('products.name'), nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Float, nullable=False)  # Add the price column
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
 
-    def __init__(self, product_name, quantity, user_id):
-        self.product_name = product_name
-        self.quantity = quantity
-        self.user_id = user_id
-
-    def update_quantity(self, quantity):
-        self.quantity += quantity
-        db.session.commit()
+    # Establish the relationship with the Product model
+    product = db.relationship('Product', backref='cart_items')
 
     def saveToDB(self):
         db.session.add(self)
