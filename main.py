@@ -11,8 +11,8 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    products = Product.query.all()
-    return render_template("index.html", products=products)
+    # products = Product.query.all()
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -191,6 +191,7 @@ def giftcard():
 
 
 if __name__ == "__main__":
-    with app.app_context():  # Ensuring the code runs within the application context
+    with app.app_context():
+         # Ensuring the code runs within the application context
         db.create_all()  # Creating the database tables
     app.run(debug=True)
