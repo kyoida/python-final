@@ -2,20 +2,23 @@
 
 {% block body %}
 
-<div class="login-container">
-    <h2>Login Form</h2>
+<div class="container">
+    <h2 class="my-4">Login Form</h2>
     <form class="login-form" action="/login" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" class="form-control" id="username" name="username" required>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" class="form-control" id="password" name="password" required>
         </div>
+        <br>
+        <p>Still don't have account? Don't worry,</p><a href="{{ url_for('register') }}">register</a>
         <div class="form-group">
-            <button type="submit">Login</button>
+            <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
 </div>
+<br>
 {% endblock %}

@@ -11,8 +11,8 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    products = Product.query.all()
-    return render_template("index.html", products=products)
+    # products = Product.query.all()
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -104,7 +104,7 @@ def add_to_cart(product_id):
 
         db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('view_products'))
 
 
 @app.route('/remove_from_cart/<int:product_id>', methods=["POST", "GET"])
@@ -169,10 +169,19 @@ def add_watch():
     return "Unauthorized access"
 
 
-@app.route('/watches')
-def show_watches():
-    watches = Product.query.all()
-    return render_template('watches.html', watches=watches)
+@app.route('/account')
+def account():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+
+    if user is None:
+        return "User not found", 404
+
+    # Pass user details to the template
+    return render_template('account.html', user=user)
 
 
 @app.route('/mechanism')
@@ -192,7 +201,7 @@ def logout():
     session.pop('login', None)
 
     # Redirect to the login page or any other desired destination
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":
