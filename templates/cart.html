@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <h1>Your Shopping Cart</h1>
 
-    <table>
-        <thead>
+
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+            <h1>Your Shopping Cart</h1>
             <tr>
                 <th>Product Name</th>
                 <th>Price</th>
@@ -24,7 +26,6 @@
         </tbody>
     </table>
 
-    <a href="{{ url_for('index') }}">Continue Shopping</a>
-
+    <a href="{{ url_for('index') }}" class="btn btn-primary">Continue Shopping</a>
 
 {% endblock %}
