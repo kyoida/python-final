@@ -65,8 +65,11 @@ def view_cart():
     user = User.query.get(user_id)
 
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
+    total_cost = sum(item.price * item.quantity for item in cart_items)
 
-    return render_template('cart.html', cart_items=cart_items)
+    # Render template with total cost
+    return render_template('cart.html', cart_items=cart_items, total_cost=total_cost)
+
 
 
 def get_product_by_id(product_id):
@@ -119,7 +122,7 @@ def remove_from_cart(product_id):
         else:
             cart_item.deleteFromDB()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('view_cart'))
 
 
 @app.route('/products')
@@ -177,10 +180,6 @@ def show_mechanism():
 @app.route('/giftcard')
 def giftcard():
     return render_template('giftcard.html')
-
-@app.route('/about_company')
-def about_company():
-    return render_template('about_company.html')
 
 
 @app.route('/logout')

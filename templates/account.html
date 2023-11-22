@@ -1,4 +1,20 @@
 {% extends 'base.html' %}
+{% block title %} account {% endblock %}
+{% block head %}
+<style>
+body{
+    background: hsla(27, 41%, 38%, 1);
+
+    background: linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    background: -moz-linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    background: -webkit-linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8A5E3A", endColorstr="#100E11", GradientType=1 );
+}
+</style>    
+{% endblock %}
 
 {% block body %}
 
@@ -9,7 +25,6 @@
             <h5 class="card-title">Hello, {{ user.user_fname }} {{ user.user_sname }}</h5>
             <p class="card-text">Here you can find your personal details and manage your account.</p>
 
-            <!-- User Information Table -->
             <table class="table table-hover">
                 <tbody>
                     <tr>
@@ -24,12 +39,11 @@
                         <th scope="row">Last Name</th>
                         <td>{{ user.user_sname }}</td>
                     </tr>
-                    <!-- Add more rows as needed -->
                 </tbody>
             </table>
 
-            <a href="{{ url_for('view_cart') }}" class="btn btn-primary">View Cart</a>
-            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+            <a href="{{ url_for('view_cart') }}"><button class="account-button-1">View Cart</button></a>
+            <a href="{{ url_for('logout') }}" ><button class="account-button-2" >Logout</button></a>
         </div>
     </div>
 </div>

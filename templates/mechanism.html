@@ -1,65 +1,82 @@
 {% extends 'base.html' %}
 
 {% block body %}
-
-<header>
-    <h1>The Art of Timekeeping: Exploring Our Watch Mechanisms</h1>
-    <p>Delve into the intricate world of watch mechanics and discover the precision behind every tick.</p>
+   <header>
+     <div class="video-header">
+    <video autoplay loop muted class="video-background">
+        <source src="/static/css/img/video (1080p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <h1 class="video-title">Understanding the Watch Mechanism</h1>
+</div>
 </header>
-
-
-<section id="introduction">
-    <h2>Introduction to Watch Mechanisms</h2>
-    <p>An overview of the sophisticated engineering that powers each of our timepieces.</p>
-    <img src="/static/css/img/mechanism-first.jpg" alt="">
-</section>
-
-<section id="mechanical-movements">
-    <h3>Mechanical Movements</h3>
-    <p>The traditional art of watchmaking, where every component works in harmony.</p>
-    <!-- Images or diagrams -->
-</section>
-
-<section id="quartz-movements">
-    <h3>Quartz Movements</h3>
-    <p>Combining modern technology with precision for unparalleled accuracy.</p>
-    <!-- Visuals and descriptions -->
-</section>
-
-<section id="automatic-movements">
-    <h3>Automatic Movements</h3>
-    <p>Self-winding marvels that capture the essence of perpetual motion.</p>
-    <!-- Interactive or animated diagrams -->
-</section>
-
-<section id="features">
-    <h3>Special Features</h3>
-    <div id="chronograph">
-        <h4>Chronograph</h4>
-        <p>Explore the functionality and design of our chronograph watches.</p>
+<div class="mechanism-words">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>A Perpetual Quest</h2>
+            </div>
+    
+            <div class="col-md-6">
+                <h3>At the Heart of Our Philosophy</h3>
+                <p>At Chronos Elegance, we believe that a watch 
+                    is more than a timekeeping device; it is a 
+                    symbol of tradition, a testament to craftsmanship,
+                     and a personal statement of style. Our philosophy 
+                     is rooted in the appreciation of timeless elegance
+                      and enduring craftsmanship. Each timepiece in our 
+                      collection is carefully selected to represent the
+                       pinnacle of design and functionality.</p>
+                <p>At the core of excellence, emblematic words, integrated know-how, and a singular vision of watchmaking.</p>
+            </div>
+        </div>
     </div>
-    <!-- Additional features like Moon Phase, Tourbillon, etc. -->
-</section>
-
-<section id="innovation">
-    <h3>Technology and Innovation</h3>
-    <p>At the forefront of horological advancements, our watches represent the pinnacle of design and functionality.</p>
-</section>
-
-<section id="interactive">
-    <h3>Discover the Inner Workings</h3>
-    <p>Click through our interactive watch model to explore its intricate components.</p>
-    <!-- Interactive tool or animation -->
-</section>
-
-<section id="testimonials">
-    <h3>Stories of Precision</h3>
-    <p>Read how our precision-engineered watches have become an integral part of our customers' lives.</p>
-    <!-- Customer stories and images -->
-</section>
+</div>
+    
+    <section class="introduction-container scroll-animation">
+        <img src="/static/css/img/lucas-santos-huRn8ECqADI-unsplash.jpg" alt="">
+        <p class="introduction-text">
+            Watches are fascinating devices that combine art, science, and engineering. In this guide, we'll explore the intricate world of watch mechanisms.
+        </p>
+    </section>
+        <section class="mechanism-explanation scroll-animation">
+            <img src="/static/css/img/mainspring.png" alt="">
+        <section class="introduction-container">
+                <img src="/static/css/img/laura-ockel-UQ2Fw_9oApU-unsplash.jpg" alt="">
+            <div class="introduction-text">
+                    <h2>Gear Train</h2>
+                    <p>The gear train transmits the stored energy from the mainspring to the balance wheel, controlling the release of energy.</p>
+            </div>
+        </section>
 
 
+        <section class="introduction-container scroll-animation">
+                <img src="/static/css/img/lukas-tennie-3dyDozzCORw-unsplash.jpg" alt="" width="100%">
+             <div class="introduction-text">
+                    <h2>Balance Wheel</h2>
+                <p>The balance wheel, in combination with the hairspring, oscillates back and forth at a constant rate, dividing time into equal segments.</p>
+            </div>
+        </section>
 
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+             const observer = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         entry.target.classList.add('visible');
+                     }
+                 });
+             });
+         
+             document.querySelectorAll('.scroll-animation').forEach(section => {
+                 observer.observe(section);
+             });
+         });
+         
+         </script>
+         
 
 
 {% endblock %}
+
+
