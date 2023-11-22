@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
+{% block head %}
+<style>
+body{
+    background: hsla(27, 41%, 38%, 1);
 
+    background: linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    background: -moz-linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    background: -webkit-linear-gradient(315deg, hsla(27, 41%, 38%, 1) 0%, hsla(280, 10%, 6%, 1) 80%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8A5E3A", endColorstr="#100E11", GradientType=1 );
+}
+</style>    
+{% endblock %}
 {% block body %}
-
+<br>
 
 <div class="container">
     <div class="row">
-        <h1>Products</h1>
         {% for product in products %}
             <div class="col-md-4 mb-3">
                 <div class="card">

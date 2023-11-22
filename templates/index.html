@@ -1,12 +1,21 @@
 {% extends 'base.html' %}
 {% block title %} home {% endblock %}
+{% block head %} 
+<style>
+  body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   
+  }
+  
+</style>
+{% endblock %}
 {% block body %}
 <!-- <h3>Savior: Where Time is Treasured</h3> -->
 <div class="index-page">
   <div class="container" id="index-main">
     <div class="row align-items-center">
         <div class="col-md-6">
-            <img src="/static/css/img/main-img-png-2.png" alt="" class="main-img-png img-fluid" width="500px">
+            <img src="/static/css/img/main-img-png-4.png" alt="" class="main-img-png img-fluid" width="500px">
         </div>
         <div class="col-md-6">
             <h1 class="index-h1" >Savior: Timeless Elegance, Modern Watches</h1>
@@ -14,56 +23,42 @@
         </div>
     </div>
 </div>
-<div class="container">
-  <div class="row" >
-    <h1>We have watches for everyone</h1>
-    <div class="col-md-6">
-      <div class="image-container">
-        <img src="/static/css/img/woodwatch-5fiibEXMHRI-unsplash.jpg" alt="" class="img-fluid hover-zoom">
-        <div class="caption">For Her</div>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="image-container">
-        <img src="/static/css/img/eliud-gil-samaniego-_1bPErRSKco-unsplash.jpg" alt="" class="img-fluid hover-zoom">
-        <div class="caption">For Him</div>
-      </div>
-    </div>
-  </div>
-
-<br>
-
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="/static/css/img/jordan-madrid-uI78CBmZdOU-unsplash (1).jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Vintage-inspired timepiece with a rugged, black nylon strap, ideal for the adventurous photographer</h5>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="/static/css/img/laurenz-heymann-al6s6JpnZis-unsplash.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Elegant diamond-studded Rolex with a luxurious gold finish</h5>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="/static/css/img/paul-cuoco-CO2vOhPqlrM-unsplash.jpg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Sleek Seiko with a classic black dial and sophisticated leather strap</h5>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<br>
 </div>
 
 
 
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="5000">
+      <img src="/static/css/img/csaba-bakos-RO9mkv1Qj84-unsplash.jpg" class="d-block w-100" alt="first main image">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="color: white;">Explore new 2024 collection</h1>
+        <p><a href="{{ url_for('view_products')}}" style="color: white;">Explore more</a></p> 
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <img src="/static/css/img/paul-cuoco-CO2vOhPqlrM-unsplash.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="color: white;">Rain tapped gently on windows</h1>
+        <p><a href="{{ url_for('view_products')}}" style="color: white;">Explore more</a></p> 
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="5000">
+      <img src="/static/css/img/jordan-madrid-uI78CBmZdOU-unsplash (1).jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h1 style="color: white;">Leaves rustled in autumn's breeze</h1>
+        <p><a href="{{ url_for('view_products')}}" style="color: white;">Explore more</a></p> 
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 {% endblock %}
