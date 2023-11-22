@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<!-- Add Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ775/resV6e0IBTTA9m87CwG7zur6CzoC8n8" crossorigin="anonymous">
+{% endblock %}
+
 {% block body %}
-<h1>Add Watch</h1>
-
-       <h2>Add a New Product</h2>
-    <form method="post" action="/add_watch">
-        <label for="name">Product Name:</label>
-        <input type="text" name="name" required><br>
-        <label for="description">Description:</label>
-        <textarea name="description" required></textarea><br>
-        <label for="price">Price:</label>
-        <input type="number" name="price" step="0.01" required><br>
-        <label for="img_url">Image URL:</label>
-        <input type="text" name="img_url" id="img_url" required>
-
-    <button type="submit">Submit</button>
+<div class="container mt-5">
+    <h1 class="mb-4">Add Watch</h1>
+    <h2>Add a New Product</h2>
+    <form method="post" action="/add_watch" class="mt-4">
+        <div class="form-group">
+            <label for="name">Product Name:</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" name="price" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="img_url">Image URL:</label>
+            <input type="text" class="form-control" name="img_url" id="img_url" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-
-    <a href="{{ url_for('index') }}">Back to Home</a>
+    <a href="{{ url_for('index') }}" class="btn btn-link">Back to Home</a>
+</div>
 {% endblock %}

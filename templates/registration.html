@@ -2,34 +2,35 @@
 
 {% block body %}
 
-
- <section class="container">
-    <header>Registration Form</header>
-    <form action="/register" method="post" class="form">
-        <div class="input-box">
-            <label>Username</label>
-            <input type="text" id="username" name="username" placeholder="Enter username" required />
-        </div>
-
-        <div class="input-box">
-            <label>First Name</label>
-            <input type="text" id="fname" name="fname" placeholder="Enter full name" required />
-        </div>
-
-        <div class="column">
-            <div class="input-box">
-                <label>Last name</label>
-                <input type="text" id="sname" name="sname" placeholder="Enter last name" required />
+<div class="registration-page">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 registration-form-container">
+                <h2 class="registration-title">Create Your Account</h2>
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sname">Last Name:</label>
+                        <input type="text" class="form-control" id="sname" name="sname" placeholder="Enter last name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class="btn btn-primary registration-button">Register</button>
+                    </div>
+                </form>
             </div>
-            <div class="input-box">
-                <label>Password</label>
-                <input type="text" id="password" name="password" placeholder="Enter password" required />
-            </div>
         </div>
-
-        <button type="submit">Submit</button>
-    </form>
-
-</section>
+    </div>
+</div>
 
 {% endblock %}

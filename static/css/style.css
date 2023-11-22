@@ -1,0 +1,275 @@
+.base-nav{
+    background: hsla(214, 100%, 25%, 1);
+
+background: linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00377F", endColorstr="#003172", GradientType=1 );
+    padding: 130px;
+}
+.base-nav a{
+    color: white;
+}
+#base-nav-link {
+    color: white;
+    font-size: 20px;
+    position:relative;
+    left: 100%;
+    
+}
+#base-nav-brand{
+
+    font-size: 35px;
+   
+
+}
+.index-page{
+    margin: 0;
+    padding: 0;
+    background: hsla(214, 100%, 25%, 1);
+
+    background: linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00377F", endColorstr="#003172", GradientType=1 );
+    }
+#index-main{
+    height: 800px;
+    display: flex;
+    justify-content: center;
+}
+.main-img-png{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.index-h1{
+    position: relative;
+    display: flex;
+    justify-content: right;
+    color: white;
+    font-size: 50px;
+    width: 500px;
+    line-height: 65px;
+    margin-left: 50%;
+
+}
+
+.hover-zoom {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover {
+    transform: scale(1.05);
+}
+
+.hover-zoom .caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black; /* Choose a text color that contrasts well with your images */
+    font-size: 24px; /* Adjust the font size as needed */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Prevents the caption from interfering with the hover effect */
+}
+
+.hover-zoom:hover .caption {
+    opacity: 1;
+}
+
+.index-button {
+    border: 1px solid black;
+    border-radius: 20px;
+    position: relative;
+    margin-left: 50%;
+    margin-top: 9%;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(0,116,174);
+    color: white;
+    transition: background-color 0.3s, transform 0.3s; /* Animation effect */
+    text-align: center; /* Center the text */
+    display: inline-block; /* Allow the use of text-align */
+    line-height: 50px; /* Vertically center the text inside the button */
+}
+
+/* Hover effect */
+.index-button:hover {
+    background-color: rgb(0,150,200); /* Slightly lighter blue */
+    transform: scale(1.05); /* Scale up the button */
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .image-container .caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 24px;
+    text-shadow: 2px 2px #000;
+    opacity: 0;
+    transition: opacity 0,5s linear;
+  }
+  
+  .image-container:hover .caption {
+    opacity: 1;
+  }
+  
+  .image-container:hover img {
+    filter: brightness(70%);
+    transition: filter 0,5s linear;
+  }
+  
+ #base-footer{
+    background: hsla(214, 100%, 25%, 1);
+
+background: linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+background: -moz-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+background: -webkit-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00377F", endColorstr="#003172", GradientType=1 );
+
+color: white;
+ } 
+ #base-footer div{
+color: #fff;
+ }
+
+
+ .login-page {
+    background: hsla(214, 100%, 25%, 1);
+
+    background: linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -moz-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -webkit-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00377F", endColorstr="#003172", GradientType=1 );
+    
+    color: white;/* Use the same gradient as the index-page for consistency */
+    color: white; /* Assuming you want white text */
+    padding: 60px 0; /* Add some padding */
+}
+
+.login-form-container {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.login-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-button {
+    width: 100%; /* Make the button full width */
+    background-color: rgb(0,116,174); /* Use the same button color as in index-button */
+    border: none;
+}
+
+.login-button:hover {
+    background-color: rgb(0,150,200); /* Lighter shade for hover effect */
+}
+
+.register-link {
+    text-align: center;
+    color: white;
+}
+
+.register-link a {
+    color: #00b0ff; /* Change as needed */
+}
+
+/* Additional styles for the form inputs, if needed */
+.form-control {
+    background-color: #ffffff;
+    color: #000;
+}
+.registration-page {
+    background: hsla(214, 100%, 25%, 1);
+
+    background: linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -moz-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    background: -webkit-linear-gradient(270deg, hsla(214, 100%, 25%, 1) 0%, hsla(214, 100%, 22%, 1) 0%, hsla(213, 100%, 2%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#00377F", endColorstr="#003172", GradientType=1 );
+    
+ /* Use the same gradient as the login-page for consistency */
+    color: white; /* Assuming you want white text */
+    padding: 60px 0; /* Add some padding */
+}
+
+.registration-form-container {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.registration-title {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registration-button {
+    width: 100%; /* Make the button full width */
+    background-color: rgb(0,116,174); /* Use the same button color as in the login page */
+    border: none;
+}
+
+.registration-button:hover {
+    background-color: rgb(0,150,200); /* Lighter shade for hover effect */
+}
+
+/* Additional styles for the form inputs, if needed */
+.form-control {
+    background-color: #ffffff;
+    color: #000;
+}
+
+
+.cart-button{
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(0,116,174);
+    color: white;
+    transition: background-color 0.3s, transform 0.3s; /* Animation effect */
+    text-align: center; /* Center the text */
+    display: inline-block; /* Allow the use of text-align */
+    line-height: 50px; /* Vertically center the text inside the button */
+    margin-bottom: 20%;
+}
+
+#account-main{
+    margin-bottom: 10%;
+}
+
+#giftcard-button{
+    margin-top: 2%;
+}

@@ -11,8 +11,7 @@ db.init_app(app)
 
 @app.route('/')
 def index():
-    products = Product.query.all()
-    return render_template("index.html", products=products)
+    return render_template("index.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -21,14 +20,13 @@ def login():
         login = request.form['username']
         password = request.form['password']
 
-        # Query the database for the user
         user = User.query.filter_by(login=login, password=password).first()
 
         if user:
 
             session['user_id'] = user.user_id
             session['username'] = user.login
-            return redirect(url_for("index"))
+            return redirect(url_for("account"))
         else:
             return render_template("login.html", context="Invalid credentials. Please try again.")
 
@@ -68,7 +66,6 @@ def view_cart():
 
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
 
-    # Pass cart_items to the render_template function
     return render_template('cart.html', cart_items=cart_items)
 
 
@@ -86,14 +83,11 @@ def add_to_cart(product_id):
     product = get_product_by_id(product_id)
 
     if product:
-        # Check if the item is already in the cart
         cart_item = CartItem.query.filter_by(product_name=product.name, user_id=user_id).first()
 
         if cart_item:
-            # If item exists, update quantity
             cart_item.quantity += 1
         else:
-            # If item does not exist, add it to the cart
             new_cart_item = CartItem(
                 product_name=product.name,
                 quantity=1,
@@ -104,7 +98,7 @@ def add_to_cart(product_id):
 
         db.session.commit()
 
-    return redirect(url_for('index'))
+    return redirect(url_for('view_products'))
 
 
 @app.route('/remove_from_cart/<int:product_id>', methods=["POST", "GET"])
@@ -117,7 +111,6 @@ def remove_from_cart(product_id):
     product = get_product_by_id(product_id)
 
     if product:
-        # Check if the item is already in the cart
         cart_item = CartItem.query.filter_by(product_name=product.name, user_id=user_id).first()
 
         if cart_item.quantity > 1:
@@ -132,47 +125,48 @@ def remove_from_cart(product_id):
 @app.route('/products')
 def view_products():
     try:
-        # Retrieve all products from the database
         products = Product.query.all()
-        print("Products:", products)  # Add this print statement
+        print("Products:", products) 
         return render_template('products.html', products=products)
     except Exception as e:
-        # Print or log the exception for debugging
         print(f"Error fetching products: {e}")
         return "Internal Server Error", 500
 
 
 @app.route('/add_watch', methods=["POST", "GET"])
 def add_watch():
-    # Check if the user is logged in and is an admin
     if 'username' in session and session['username'] == 'Admin':
         products = Product.query.all()
 
         if request.method == 'POST':
             name = request.form.get('name')
             description = request.form.get('description')
-            price = float(request.form.get('price', 0.0))  # Assuming the price is a float
+            price = float(request.form.get('price', 0.0))  
             img_url = request.form.get('img_url')
 
             new_product = Product(name=name, description=description, price=price, img_url=img_url)
             db.session.add(new_product)
             db.session.commit()
 
-            # Redirect to the add_watch page after the POST request to avoid form resubmission on page refresh
             return redirect(url_for('add_watch'))
 
         elif request.method == "GET":
-            # Handle the GET request as needed
             return render_template('add_watch.html', products=products)
 
-    # If the user is not an admin or not logged in, you can redirect or display an error message.
     return "Unauthorized access"
 
 
-@app.route('/watches')
-def show_watches():
-    watches = Product.query.all()
-    return render_template('watches.html', watches=watches)
+@app.route('/account')
+def account():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+
+    if user is None:
+        return "User not found", 404
+    return render_template('account.html', user=user)
 
 
 @app.route('/mechanism')
@@ -184,18 +178,19 @@ def show_mechanism():
 def giftcard():
     return render_template('giftcard.html')
 
+@app.route('/about_company')
+def about_company():
+    return render_template('about_company.html')
+
 
 @app.route('/logout')
 def logout():
-    # Clear the user-related session variables
     session.pop('user_id', None)
     session.pop('login', None)
-
-    # Redirect to the login page or any other desired destination
     return redirect(url_for('login'))
 
 
 if __name__ == "__main__":
-    with app.app_context(): # Ensuring the code runs within the application context
-        db.create_all()  # Creating the database tables
+    with app.app_context():
+        db.create_all() 
     app.run(debug=True)

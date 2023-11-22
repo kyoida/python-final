@@ -2,51 +2,66 @@
 {% block title %} home {% endblock %}
 {% block body %}
 <!-- <h3>Savior: Where Time is Treasured</h3> -->
-
-
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="index-page">
+  <div class="container" id="index-main">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="/static/css/img/main-img-png-2.png" alt="" class="main-img-png img-fluid" width="500px">
+        </div>
+        <div class="col-md-6">
+            <h1 class="index-h1" >Savior: Timeless Elegance, Modern Watches</h1>
+            <a href="{{ url_for('view_products') }}"><button class="index-button"> Find out more </button></a>
+        </div>
     </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="5000">
-        <img src="/static/css/img/alexander-andrews-anUOLC3zMD4-unsplash.jpg" class="d-block w-100" alt="first main image" >
-        <div class="carousel-caption d-none d-md-block">
-          <h1 style="color: white;">Explore new 2024 collection</h1>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <img src="/static/css/img/Desktop - 1.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="5000">
-        <img src="/static/Desktop - 1.png" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
+</div>
+<div class="container">
+  <div class="row" >
+    <h1>We have watches for everyone</h1>
+    <div class="col-md-6">
+      <div class="image-container">
+        <img src="/static/css/img/woodwatch-5fiibEXMHRI-unsplash.jpg" alt="" class="img-fluid hover-zoom">
+        <div class="caption">For Her</div>
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <div class="col-md-6">
+      <div class="image-container">
+        <img src="/static/css/img/eliud-gil-samaniego-_1bPErRSKco-unsplash.jpg" alt="" class="img-fluid hover-zoom">
+        <div class="caption">For Him</div>
+      </div>
+    </div>
   </div>
-  
 
+<br>
 
-
-
-
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/css/img/jordan-madrid-uI78CBmZdOU-unsplash (1).jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Vintage-inspired timepiece with a rugged, black nylon strap, ideal for the adventurous photographer</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/css/img/laurenz-heymann-al6s6JpnZis-unsplash.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Elegant diamond-studded Rolex with a luxurious gold finish</h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/static/css/img/paul-cuoco-CO2vOhPqlrM-unsplash.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Sleek Seiko with a classic black dial and sophisticated leather strap</h5>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+</div>
 
 
 

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container" id="account-main">
+    <h2 class="mt-5">Account</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Hello, {{ user.user_fname }} {{ user.user_sname }}</h5>
+            <p class="card-text">Here you can find your personal details and manage your account.</p>
+
+            <!-- User Information Table -->
+            <table class="table table-hover">
+                <tbody>
+                    <tr>
+                        <th scope="row">Username</th>
+                        <td>{{ user.login }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">First Name</th>
+                        <td>{{ user.user_fname }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Last Name</th>
+                        <td>{{ user.user_sname }}</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+
+            <a href="{{ url_for('view_cart') }}" class="btn btn-primary">View Cart</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
