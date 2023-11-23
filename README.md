@@ -7,4 +7,4 @@ Create web app using Flask and SQL
 
 ## Usage
 - clone repository
-- `` flask --app main run --debug ``
+- to run `` flask --app main run --debug ``
